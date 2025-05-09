@@ -1,5 +1,8 @@
-import { serve } from "https://deno.land/std@0.208.0/http/server.ts"; // Используйте актуальную версию
-import { contentType } from "https://deno.land/std@0.208.0/media_types/mod.ts";
+// import { serve } from "https://deno.land/std@0.208.0/http/server.ts"; // Используйте актуальную версию
+// import { contentType } from "https://deno.land/std@0.208.0/media_types/mod.ts";
+
+import { contentType } from "jsr:@std/media-types@^0.224.0";
+// import { contentType } from "jsr:@std/media-types@^0.1.0"; // This was the previous attempt
 
 // Открываем KV базу данных
 const kv = await Deno.openKv();
@@ -105,4 +108,4 @@ async function handler(req: Request): Promise<Response> {
 }
 
 console.log("HTTP server running. Access it at: http://localhost:8000/");
-serve(handler, { port: 8000 });
+Deno.serve({ handler: handler, port: 8000 });
