@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скоростной Кликер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Скоростной Кликер</h1>
+        <nav id="menu">
+            <button data-section="about">Об игре</button>
+            <button data-section="game">Играть</button>
+            <button data-section="results">Результаты</button>
+        </nav>
+    </header>
+
+    <main id="workspace">
+        <section id="about-section" class="active">
+            <h2>Об игре</h2>
+            <p>Добро пожаловать в "Скоростной Кликер"!</p>
+            <p>Правила просты: после начала игры у вас будет ограниченное время (например, 10 секунд), чтобы кликнуть по специальной области как можно больше раз.
+            Чем больше кликов, тем выше ваш результат!</p>
+            <p>По окончании игры вы сможете ввести свое имя и сохранить результат в таблице рекордов.</p>
+            <p>Удачи!</p>
+            <p><small>Идея игры проста и стара как мир, но всегда увлекательна!</small></p>
+        </section>
+
+        <section id="game-section">
+            <h2>Игра</h2>
+            <div id="game-area">
+                <p>Оставшееся время: <span id="time-left">10</span> сек</p>
+                <p>Клики: <span id="click-count">0</span></p>
+                <button id="start-game-button">Начать игру!</button>
+                <div id="clickable-zone" class="hidden">Кликай сюда!</div>
+            </div>
+            <div id="game-over-dialog" class="hidden">
+                <h3>Игра окончена!</h3>
+                <p>Ваш результат: <span id="final-score">0</span> кликов.</p>
+                <label for="player-name">Введите ваше имя:</label>
+                <input type="text" id="player-name" maxlength="20">
+                <button id="save-score-button">Сохранить результат</button>
+            </div>
+        </section>
+
+        <section id="results-section">
+            <h2>Таблица рекордов</h2>
+            <div>
+                <label for="rows-count">Показывать записей: </label>
+                <select id="rows-count">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+            <table id="highscore-table">
+                <thead>
+                    <tr>
+                        <th data-sort="rank">#</th>
+                        <th data-sort="name">Имя</th>
+                        <th data-sort="score">Очки</th>
+                        <th data-sort="date">Дата</th>
+                    </tr>
+                </thead>
+                <tbody id="highscore-table-body">
+                    <!-- Данные будут загружены сюда -->
+                </tbody>
+            </table>
+            <p id="loading-message">Загрузка рекордов...</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023 Ваше Имя. Итоговый проект.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

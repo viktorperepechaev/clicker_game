@@ -1,0 +1,146 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav#menu {
+  margin-top: 10px;
+}
+
+nav#menu button {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+nav#menu button:hover {
+  background-color: #777;
+}
+
+main#workspace {
+  flex-grow: 1;
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+main#workspace section {
+  display: none; /* Скрываем все секции по умолчанию */
+}
+
+main#workspace section.active {
+  display: block; /* Показываем активную секцию */
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  margin-top: auto;
+}
+
+/* Стили для игры */
+#game-area {
+  text-align: center;
+}
+
+#clickable-zone {
+  width: 200px;
+  height: 200px;
+  background-color: lightcoral;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1.5em;
+  user-select: none; /* Чтобы текст не выделялся при кликах */
+}
+
+#clickable-zone.hidden {
+  display: none;
+}
+
+#game-over-dialog {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+#game-over-dialog.hidden {
+  display: none;
+}
+#game-over-dialog input[type="text"] {
+  padding: 8px;
+  margin: 5px 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#game-over-dialog button {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#game-over-dialog button:hover {
+  background-color: #218838;
+}
+
+
+/* Стили для таблицы рекордов */
+#results-section div {
+  margin-bottom: 15px;
+}
+#highscore-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#highscore-table th, #highscore-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#highscore-table th {
+  background-color: #f0f0f0;
+  cursor: pointer; /* Для сортировки */
+}
+
+#highscore-table th:hover {
+  background-color: #e0e0e0;
+}
+
+#loading-message {
+  text-align: center;
+  font-style: italic;
+}
