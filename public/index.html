@@ -3,51 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Скоростной Кликер</title>
+    <title>Вторжение из Бездны: Последний Рубеж</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=IM+Fell+English+SC&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Скоростной Кликер</h1>
+        <h1>Вторжение из Бездны: Последний Рубеж</h1>
         <nav id="menu">
-            <button data-section="about">Об игре</button>
-            <button data-section="game">Играть</button>
-            <button data-section="results">Результаты</button>
+            <button data-section-anchor="about-section">О Битве</button>
+            <button data-section-anchor="game-section">Сразиться</button>
+            <button data-section-anchor="results-section">Летописи</button>
         </nav>
     </header>
 
     <main id="workspace">
-        <section id="about-section" class="active">
-            <h2>Об игре</h2>
-            <p>Добро пожаловать в "Скоростной Кликер"!</p>
-            <p>Правила просты: после начала игры у вас будет ограниченное время (например, 10 секунд), чтобы кликнуть по специальной области как можно больше раз.
-            Чем больше кликов, тем выше ваш результат!</p>
-            <p>По окончании игры вы сможете ввести свое имя и сохранить результат в таблице рекордов.</p>
-            <p>Удачи!</p>
-            <p><small>Идея игры проста и стара как мир, но всегда увлекательна!</small></p>
+        <section id="about-section">
+            <h2>О Битве: Пред Лицом Хаоса</h2>
+            <p>Добро пожаловать в "Вторжение из Бездны: Последний Рубеж"! Здесь, на последнем оплоте здравомыслия, вы столкнетесь с неумолимым натиском тварей из иных измерений.</p>
+            <p>Правила суровы, как сама вечность: управляйте своим последним защитным бастионом, перемещаясь и отстреливая волны наступающих кошмаров. Чем больше тварей вы уничтожите, тем выше будет ваш счет в этой безнадежной борьбе.</p>
+            <p>Если вам удастся выжить и отразить достаточно угроз, вы сможете начертать свое имя в летописях тех, кто осмелился противостоять, и сохранить свой подвиг в таблице павших и победивших.</p>
+            <p>Да не дрогнет ваш дух пред лицом невыразимого!</p>
+            <p><small>Концепция отражения атаки извне стара, как первые звезды, но вечно актуальна, когда речь идет о выживании.</small></p>
         </section>
 
         <section id="game-section">
-            <h2>Игра</h2>
-            <div id="game-area">
-                <p>Оставшееся время: <span id="time-left">10</span> сек</p>
-                <p>Клики: <span id="click-count">0</span></p>
-                <button id="start-game-button">Начать игру!</button>
-                <div id="clickable-zone" class="hidden">Кликай сюда!</div>
+            <h2>Вторжение из Бездны!</h2>
+            <button id="start-invaders-button">Пробудить Ужас!</button>
+            <div id="invaders-game-active-elements" class="hidden"> <!-- Container for active game elements -->
+                <h3 class="results">0</h3> <!-- Score display for Space Invaders -->
+                <p id="game-timer">Time: 0.0s</p> <!-- Timer Display -->
+                <div class="grid"></div> <!-- Grid for Space Invaders -->
+                <div class="reload-bar-container">
+                    <div id="reload-bar-progress"></div>
+                </div>
             </div>
-            <div id="game-over-dialog" class="hidden">
-                <h3>Игра окончена!</h3>
-                <p>Ваш результат: <span id="final-score">0</span> кликов.</p>
-                <label for="player-name">Введите ваше имя:</label>
-                <input type="text" id="player-name" maxlength="20">
-                <button id="save-score-button">Сохранить результат</button>
+            <div id="invaders-win-dialog" class="hidden"> <!-- Dialog for winning and saving score -->
+                <h3>Вторжение Остановлено!</h3>
+                <p>Твой счет: <span id="final-invaders-score">0</span>.</p>
+                <p>Затраченное время: <span id="final-invaders-time">0.0s</span>.</p>
+                <label for="invader-player-name">Начертай свое имя, защитник:</label>
+                <input type="text" id="invader-player-name" maxlength="20" placeholder="Имя Стража Границы...">
+                <button id="save-invaders-score-button">Запечатать Подвиг</button>
+                <button id="play-again-from-win-button">Играть Снова?</button>
             </div>
         </section>
 
         <section id="results-section">
-            <h2>Таблица рекордов</h2>
+            <h2>Летопись Отмеченных</h2>
             <div>
-                <label for="rows-count">Показывать записей: </label>
+                <label for="rows-count">Показать Стражей: </label>
                 <select id="rows-count">
                     <option value="10">10</option>
                     <option value="25">25</option>
@@ -59,21 +66,21 @@
                 <thead>
                     <tr>
                         <th data-sort="rank">#</th>
-                        <th data-sort="name">Имя</th>
-                        <th data-sort="score">Очки</th>
-                        <th data-sort="date">Дата</th>
+                        <th data-sort="name">Имя Стража</th>
+                        <th data-sort="score">Счет Подвига</th>
+                        <th data-sort="date">Время Подвига</th>
                     </tr>
                 </thead>
                 <tbody id="highscore-table-body">
                     <!-- Данные будут загружены сюда -->
                 </tbody>
             </table>
-            <p id="loading-message">Загрузка рекордов...</p>
+            <p id="loading-message">Летописи загружаются из бездны...</p>
         </section>
     </main>
 
     <footer>
-        <p>© 2023 Ваше Имя. Итоговый проект.</p>
+        <p>© 2023 Ваше Имя. Итоговый проект во тьме веков.</p>
     </footer>
 
     <script src="script.js"></script>
