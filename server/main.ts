@@ -95,9 +95,9 @@ async function handler(req: Request): Promise<Response> {
 
     // ---- Сервинг статических файлов ----
     // Adjusted to serve from the root directory where index.html, style.css, script.js are expected
-    let filePath = "./public" + pathname; 
+    let filePath = "./public" + pathname; // Prepend "public/" to access files in that directory
     if (pathname === "/") {
-        filePath = "./index.html";
+        filePath = "./public/index.html";
     }
 
     try {
